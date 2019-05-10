@@ -21,7 +21,7 @@ def getBalance(voip):
 </response>
 """
     #print(s)
-    f = open('/home/balance.voipms', 'w')
+    f = open('/home/<FILENAME>', 'w')
     f.write(s)
     f.close()
     pushover(voipms_total)
