@@ -8,7 +8,7 @@ ENV TIMEZONE America/Toronto
 # AWS
 ENV AWS_ACCESS_KEY_ID <ID>
 ENV AWS_SECRET_ACCESS_KEY <KEY>
-ENV AWS_DEFAULT_REGION <REGION> 
+ENV AWS_DEFAULT_REGION <REGION>
 ENV AWS_S3_BUCKET <BUCKET>
 
 # Pushover
@@ -38,18 +38,17 @@ RUN apk update &&  \
 
 # For cron
 WORKDIR /home
-COPY crontab.txt /home/crontab
-RUN crontab /home/crontab
-RUN chmod 600 /etc/crontabs
+COPY crontab.txt /var/crontab.txt
+RUN crontab /var/crontab.txt
 
 # For supervisor
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 # Main
-RUN touch /home/<FILENAME>
+RUN touch $ACROBITS_FILENAME
 COPY getBalance.py /home/getBalance.py
 
-COPY requirements.txt /home/requirements.txt
-RUN pip install -r /home/requirements.txt
+COPY requirements.txt /var/requirements.txt
+RUN pip install -r /var/requirements.txt
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisor.conf"]
