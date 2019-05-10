@@ -1,2 +1,3 @@
 # voipms-getbalance
-Get VoIP.ms balance, generate XML, and upload to S3 bucket for Groundwire app.
+Retrieve voip account balance using VoIP.ms API, generate XML required by the Groundwire app to display on screen, and send a notification to Pushover on a schedule.
+
