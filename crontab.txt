@@ -1,2 +1,2 @@
-1 8,18 * * * /usr/local/bin/python /home/getBalance.py 2>&1
+0 8 * * 5 /usr/local/bin/python /home/getBalance.py 2>&1
 
